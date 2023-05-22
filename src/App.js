@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import './App.css'
+import 'react-toastify/dist/ReactToastify.css'
+
+import Home from "./components/User/home/home";
+import Login from "./components/User/Login/Login";
+import Signup from "./components/User/Signup/Signup";
+
+import UserList from './components/Admin/UserList';
+import AddUser from './components/Admin/AddUser';
+import EditUser from './components/Admin/EditUser';
+import AdminLogin from './components/Admin/AdminLogin';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home/>} />
+        <Route path='/login' element={<Login/>} />
+        <Route path='/register' element={<Signup/>}/>
+        <Route path='/admin' element={<UserList/>}/>
+        <Route path='/addUser' element={<AddUser/>}/>
+        <Route path='/EditUser/:id' element={<EditUser/>}/>
+        <Route path='/adminlogin' element={<AdminLogin/>}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
